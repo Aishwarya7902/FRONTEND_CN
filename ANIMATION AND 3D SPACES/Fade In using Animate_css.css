@@ -9,6 +9,5 @@
     border-width: 3px 0px 3px 0px;
     text-align: center;
     padding: 5px;
-   animation: fadeIn 1s ease-in-out infinite alternate;
-    opacity: 0;
+   
 }
