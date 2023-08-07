@@ -1,0 +1,28 @@
+@keyframes changeHeight{
+    0%{
+        transform: translateY(0px);
+    }
+
+    25%{
+        transform: translateY(100px);
+    }
+    50%{
+        transform: translateY(-100px);
+    }
+    75%{
+        transform: translateY(75px);
+    }
+    100%{
+        transform: translateY(-75px);
+    }
+}
+.demo-div{
+    height: 200px;
+    width: 200px;
+    background-color: rgb(253, 158, 221);
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    animation:changeHeight 1s ease-in-out;
+}
+
