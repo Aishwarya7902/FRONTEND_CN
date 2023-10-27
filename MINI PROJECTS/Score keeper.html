@@ -1,4 +1,4 @@
-a<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <script
@@ -21,50 +21,47 @@ a<!DOCTYPE html>
     <script type="text/babel">
       let score=0;
       let wicket=0;
-      function addOne(){
-        if(wicket<10){
-        score+=1;
-        rootElement.render(<App/>);
-        }
-      }
-
-      //addTwo
-      function addTwo(){
-        if(wicket<10){
-        score+=2;
-        rootElement.render(<App/>);
-        }
-      }
+      let ballWiseRes=[];
+      
       //addWicket
       function addWicket(){
         if(wicket<10){
+        ballWiseRes.push("w");
         wicket+=1;
         rootElement.render(<App/>);
+        console.log(ballWiseRes);
         }
       }
 
       //addScore
       function addScore(num){
         if(wicket<10){
+        ballWiseRes.push(num);
         score+=num;
         rootElement.render(<App/>);
+        console.log(ballWiseRes);
         }
       }
-    
-      
-     const App = ()=>(
-      <>
-       <h1>SCORE KEEPER</h1>
-       <h2>Score : {score}/{wicket}</h2>
-       <div>
-        <button onClick={addOne}>1</button>
-        <button onClick={addTwo}>2</button>
+
+      const ScoreButtons = ()=>(
+        <div>
+        <button onClick={()=>addScore(0)}>0</button>
+        <button onClick={()=>addScore(1)}>1</button>
+        <button onClick={()=>addScore(2)}>2</button>
         <button onClick={()=>addScore(3)}>3</button>
         <button onClick={()=>addScore(4)}>4</button>
         <button onClick={()=>addScore(5)}>5</button>
         <button onClick={()=>addScore(6)}>6</button>
         <button onClick={addWicket}>Wickets</button>
       </div>
+      )
+    
+      
+     const App = ()=>(
+      <>
+       <h1>SCORE KEEPER</h1>
+       <h2>Score : {score}/{wicket}</h2>
+       <ScoreButtons/>
       </>
 
      )
