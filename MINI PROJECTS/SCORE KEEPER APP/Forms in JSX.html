@@ -15,40 +15,54 @@
   <script type="text/babel">
     let inputRefName = React.createRef();
     let inputRefMarks = React.createRef();
-
+    let arr=[];
     function handleSubmit(event) {
       event.preventDefault();
-
+      arr.push(inputRefName.current.value + "," + inputRefMarks.current.value);
+      inputRefName.current.value="";
+      inputRefMarks.current.value=null;
       rootElement.render(<App />);
     }
 
     const Form = () => (
+     <>
+      <h1>Students' form</h1>
+      <div>
       <form onSubmit={handleSubmit}>
-        <input ref={inputRefName} placeholder="Name" />
-        <input ref={inputRefMarks} placeholder="Marks" />
-        <button>Submit</button>
+        <input type="text" ref={inputRefName} placeholder="Name" />
+        <input  type="number" ref={inputRefMarks} placeholder="Marks" />
+        <button  type="submit">Submit</button>
       </form>
+      </div>
+     </>
     )
 
-    const Result = () => <p>
-      <table>
-        <tr>
+    const Result = () => 
+      <table border="1">
+        <thead>
+         <tr>
           <th>Student's name</th>
           <th>Marks</th>
 
         </tr>
-        <tr>
-          <td>{inputRefName.current.value}</td>
-          <td>{inputRefMarks.current.value}</td>
-
-        </tr>
+      </thead>
+     <tbody>
+     {arr.map((student,index)=>(
+     <tr key={index}>
+       <td>{student.split(",")[0]}</td>
+        <td>{student.split(",")[1]}</td>
+      </tr>
+     ))}
+      
+      </tbody>
 
       </table>
-    </p>;
+    
 
     const App = () => (
       <>
         <Form />
+        <br/>
         <Result />
       </>
     );
