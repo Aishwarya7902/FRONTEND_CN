@@ -5,6 +5,7 @@ douts
 2.how to handle onSubmit event----> soln :use onClick event handler
 */
 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,16 +26,30 @@ douts
     <div id="root"></div>
 
     <script type="text/babel">
-      let cnt=0;
+      let cntCar=0;
+      let cntBike=0;
+      let cntScooty=0;
+      let cntBicycle=0;
       // Create handlers to increase and decrease vehicle count here
-      function handleIncrease(){
-        cnt+=1;
+      
+      function handleIncrease(vehicle){
+        
+        if(vehicle=='car') cntCar++;
+        else if(vehicle=='bike') cntBike++;
+        else if(vehicle=='scooty') cntScooty++;
+        else cntBicycle++;
+        
+        
         rootElement.render(<App/>);
       }
 
-      function handleDecrease(){
-       if(cnt>0)
-        cnt-=1;
+      function handleDecrease(vehicle){
+         if(vehicle=='car' && cntCar>0) cntCar--;
+        else if(vehicle=='bike' && cntBike>0) cntBike--;
+        else if(vehicle=='scooty' && cntScooty>0) cntScooty--;
+        else 
+        if(cntBicycle>0) cntBicycle--;
+        
         rootElement.render(<App/>);
       }
 
@@ -44,34 +59,34 @@ douts
           <ol>
             <li>
               <p>
-                <b>Car: {cnt}</b> &emsp;
+                <b>Car: {cntCar}</b> &emsp;
                {/* Add increase and decrease count buttons here */}
-               <button>Increase</button>&nbsp;&nbsp;
-               <button>Decrease</button>
+               <button onClick={()=> handleIncrease("car")}>Increase</button>&nbsp;&nbsp;
+               <button onClick={()=> handleDecrease("car")}>Decrease</button>
               </p>
             </li>
             <li>
               <p>
-                <b>Bike:{cnt} </b> &emsp;
+                <b>Bike:{cntBike} </b> &emsp;
                 {/* Add increase and decrease count buttons here */}
-                <button>Increase</button>&nbsp;&nbsp;
-               <button>Decrease</button>
+                <button onClick={()=> handleIncrease("bike")}>Increase</button>&nbsp;&nbsp;
+               <button onClick={()=> handleDecrease("bike")}>Decrease</button>
               </p>
             </li>
             <li>
               <p>
-                <b>Scooty:{cnt} </b> &emsp;
+                <b>Scooty:{cntScooty} </b> &emsp;
                 {/* Add increase and decrease count buttons here */}
-                <button>Increase</button>&nbsp;&nbsp;
-               <button>Decrease</button>
+                <button onClick={()=> handleIncrease("scooty")}>Increase</button>&nbsp;&nbsp;
+               <button onClick={()=> handleDecrease("scooty")}>Decrease</button>
               </p>
             </li>
             <li>
               <p>
-                <b>Bicycle:{cnt}</b> &emsp;
+                <b>Bicycle:{cntBicycle}</b> &emsp;
                 {/* Add increase and decrease count buttons here */}
-                <button>Increase</button>&nbsp;&nbsp;
-               <button>Decrease</button>
+                <button onClick={()=> handleIncrease("bicycle")}>Increase</button>&nbsp;&nbsp;
+               <button onClick={()=> handleDecrease("bicycle")}>Decrease</button>
               </p>
             </li>
           </ol>
@@ -83,3 +98,4 @@ douts
     </script>
   </body>
 </html>
+
