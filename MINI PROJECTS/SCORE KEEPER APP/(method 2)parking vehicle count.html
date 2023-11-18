@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <title>React App</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      let count = {
+        car: 0,
+        bike: 0,
+        scooty: 0,
+        bicycle: 0,
+      };
+
+      function handleIncrease(vehicle) {
+        count[vehicle]++;
+        rootElement.render(<App />);
+      }
+
+      function handleDecrease(vehicle) {
+        if (count[vehicle] > 0) count[vehicle]--;
+
+        rootElement.render(<App />);
+      }
+
+      const App = () => (
+        <>
+          <p>List of all the vehicles count in the parking.</p>
+          <ol>
+            <li>
+              <p>
+                <b>Car: {count["car"]}</b> &emsp;
+                {/* Add increase and decrease count buttons here */}
+                <button onClick={() => handleIncrease("car")}>Increase</button>
+                &nbsp;&nbsp;
+                <button onClick={() => handleDecrease("car")}>Decrease</button>
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>Bike:{count["bike"]} </b> &emsp;
+                {/* Add increase and decrease count buttons here */}
+                <button onClick={() => handleIncrease("bike")}>Increase</button>
+                &nbsp;&nbsp;
+                <button onClick={() => handleDecrease("bike")}>Decrease</button>
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>Scooty:{count["scooty"]} </b> &emsp;
+                {/* Add increase and decrease count buttons here */}
+                <button onClick={() => handleIncrease("scooty")}>
+                  Increase
+                </button>
+                &nbsp;&nbsp;
+                <button onClick={() => handleDecrease("scooty")}>
+                  Decrease
+                </button>
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>Bicycle:{count["bicycle"]}</b> &emsp;
+                {/* Add increase and decrease count buttons here */}
+                <button onClick={() => handleIncrease("bicycle")}>
+                  Increase
+                </button>
+                &nbsp;&nbsp;
+                <button onClick={() => handleDecrease("bicycle")}>
+                  Decrease
+                </button>
+              </p>
+            </li>
+          </ol>
+        </>
+      );
+
+      const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+      rootElement.render(<App />);
+    </script>
+  </body>
+</html>
