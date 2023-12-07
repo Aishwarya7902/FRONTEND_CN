@@ -1,0 +1,2 @@
+✅ setState is asynchronous in nature.
+✅ In setState batching is done.....if u write multiple setState statements..........react will batch them together and only the last one will work.
